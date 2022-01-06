@@ -29,7 +29,7 @@ has_many: purchases
 | status_id           | integer    | null: false                    |
 | postage_type_id     | integer    | null: false                    |
 | area_id             | integer    | null: false                    |
-| preparation_days_id | integer    | null: false                    |
+| preparation_day_id  | integer    | null: false                    |
 | price               | integer    | null: false                    |
 | user                | references | null: false, foreign_key: true |
 
