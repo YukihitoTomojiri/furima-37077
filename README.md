@@ -1,24 +1,73 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users
 
-Things you may want to cover:
+|Column              |Type     |Options                         |
+|--------------------|---------|--------------------------------|
+| nickname           | string  | null: false                    |
+| email              | string  | null: false, unique: true      |
+| encrypted_password | string  | null: false                    |
+| first_name_kanji   | string  | null: false                    |
+| last_name_kanji    | string  | null: false                    |
+| first_name_kana    | string  | null: false                    |
+| last_name_kana     | string  | null: false                    |
+| birth_date         | date    | null: false                    |
 
-* Ruby version
 
-* System dependencies
+### Association
+has_many: items
+has_many: purchases
 
-* Configuration
 
-* Database creation
+## items
 
-* Database initialization
+|Column               |Type        |Options                         |
+|---------------------|------------|--------------------------------|
+| item                | string     | null: false                    |
+| comment             | text       | null: false                    |
+| category_id         | integer    | null: false                    |
+| status_id           | integer    | null: false                    |
+| postage_type_id     | integer    | null: false                    |
+| area_id             | integer    | null: false                    |
+| preparation_day_id  | integer    | null: false                    |
+| price               | integer    | null: false                    |
+| user                | references | null: false, foreign_key: true |
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+belongs_to: user
+has_one: purchase
+has_one_attached: image
+belongs_to_active_hash: category
+belongs_to_active_hash: status
+belongs_to_active_hash: postage_type
+belongs_to_active_hash: area
+belongs_to_active_hash: preparation_days
 
-* Deployment instructions
+## purchases
 
-* ...
+|Column   |Type        |Options                         |
+|---------|------------|--------------------------------|
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
+
+### Association
+belongs_to: user
+belongs_to: item
+has_one: address
+
+## addresses
+
+|Column          |Type        |Options                        |
+|----------------|------------|-------------------------------|
+| postal_code    | string     | null:false                    |
+| area_id        | integer    | null:false                    |
+| municipality   | string     | null:false                    |
+| block          | string     | null:false                    |
+| building       | string     |                               |
+| phone_number   | string     | null:false                    |
+| purchase       | references | null:false, foreign_key: true |
+
+### Association
+belongs_to: purchase
+belongs_to_active_hash: area
