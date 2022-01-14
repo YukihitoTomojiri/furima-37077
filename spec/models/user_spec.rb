@@ -60,17 +60,27 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana can't be blank", "Last name kana can't be blank")
       end
-      it 'お名前(全角)は、全角（漢字・ひらがな・カタカナ）での入力がなければ登録できない' do
+      it 'last_name_kanjiは、全角（漢字・ひらがな・カタカナ）での入力がなければ登録できない' do
         @user.last_name_kanji = 'aaaaaa'
-        @user.first_name_kanji = 'aaaaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include('First name kanji is invalid', 'Last name kanji is invalid')
+        expect(@user.errors.full_messages).to include('Last name kanji is invalid')
       end
-      it 'お名前カナ(全角)は、全角（カタカナ）での入力がなければ登録できない' do
+      it 'first_name_kanjiは、全角での（漢字・ひらがな・カタカナ）での入力がなければ登録できない' do
+        @user.first_name_kanji = 'aaaaaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('First name kanji is invalid')
+      end
+
+
+      it 'last_name_kanaは、全角（カタカナ）での入力がなければ登録できない' do
         @user.last_name_kana = 'あああ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Last name kana is invalid')
+      end
+      it 'first_name_kanaは、全角（カタカナ）での入力がなければ登録できない' do
         @user.first_name_kana = 'aaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include('First name kana is invalid', 'Last name kana is invalid')
+        expect(@user.errors.full_messages).to include('First name kana is invalid')
       end
       it 'birth_dateは空白では登録できない' do
         @user.birth_date = ''
