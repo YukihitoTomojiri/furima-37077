@@ -49,29 +49,29 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Password is invalid')
       end
       it 'nicknameが空では登録できない' do
-        @user.nickname = ""
+        @user.nickname = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Nickname can't be blank")
       end
       it 'メールアドレスが空では登録できない' do
-        @user.email = ""
+        @user.email = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Email can't be blank")
       end
       it 'パスワードが空では登録できない' do
-        @user.password = ""
+        @user.password = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
       it '英字のみのパスワードでは登録できない' do
-        @user.password = "aaaaaa"
+        @user.password = 'aaaaaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is invalid")
+        expect(@user.errors.full_messages).to include('Password is invalid')
       end
       it '全角文字を含むパスワードでは登録できない' do
-        @user.password = "ああああああ"
+        @user.password = 'ああああああ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is invalid")
+        expect(@user.errors.full_messages).to include('Password is invalid')
       end
       it 'last_name_kanjiは、名字と名前が空白では登録できない' do
         @user.last_name_kanji = ''
