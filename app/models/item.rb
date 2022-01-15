@@ -1,10 +1,11 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :item_category
-  belongs_to :item_status
-  belongs_to :item_postage_type
-  belongs_to :item_area
-  belongs_to :item_preparation_day
+  belongs_to        :item_category
+  belongs_to        :item_status
+  belongs_to        :item_postage_type
+  belongs_to        :item_area
+  belongs_to        :item_preparation_day
+  has_one_atttached :image
 
   with_options presence: true do
     validates :item
