@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   belongs_to        :item_postage_type
   belongs_to        :item_area
   belongs_to        :item_preparation_day
-  has_one_atttached :image
+  has_one_attached  :image
 
   with_options presence: true do
     validates :item
