@@ -6,7 +6,7 @@ RSpec.describe Item, type: :model do
   end
   describe '商品の投稿' do
     context "商品投稿ができる場合"do
-      it "image, item, comment, category_id, status_id, area_id, preparation_day_id, priceが存在すれば投稿できる" do
+      it "image, item, comment, category_id, postage_type_id, status_id, area_id, preparation_day_id, priceが存在すれば投稿できる" do
         expect(@item).to be_valid
       end
     end
@@ -30,6 +30,11 @@ RSpec.describe Item, type: :model do
         @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be Blank")
+      end
+      it "postage_type_idが1の場合" do
+        @item.postage_type_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Postage type can't be Blank")
       end
       it "status_idが1の場合" do
         @item.status_id = 1
@@ -58,6 +63,11 @@ RSpec.describe Item, type: :model do
       end
       it "priceが9999999円以上の場合" do
         @item.price = 10000000
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is invalid")
+      end
+      it "priceに半角数字以外が含まれている場合" do
+        @item.price = "あああ"
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is invalid")
       end
