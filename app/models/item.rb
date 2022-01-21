@@ -6,12 +6,14 @@ class Item < ApplicationRecord
   belongs_to_active_hash :item_area
   belongs_to_active_hash :item_preparation_day
   has_one_attached       :image
+  belongs_to             :user
 
   with_options presence: true do
     validates :image
     validates :item
     validates :comment
     validates :category_id,        numericality: { other_than: 1 , message: "can't be Blank"}
+    validates :postage_type_id,    numericality: { other_than: 1 , message: "can't be Blank"}
     validates :status_id,          numericality: { other_than: 1 , message: "can't be Blank"}
     validates :area_id,            numericality: { other_than: 1 , message: "can't be Blank"}
     validates :preparation_day_id, numericality: { other_than: 1 , message: "can't be Blank"}
