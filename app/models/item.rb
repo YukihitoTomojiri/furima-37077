@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
   belongs_to_active_hash :item_status
-  belongs_to_active_hash :item_postage_type
+  belongs_to_active_hash :PostageType
   belongs_to_active_hash :item_area
   belongs_to_active_hash :item_preparation_day
   has_one_attached       :image
