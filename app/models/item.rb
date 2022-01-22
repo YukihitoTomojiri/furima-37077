@@ -2,11 +2,12 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
   belongs_to_active_hash :item_status
-  belongs_to_active_hash :item_postage_type
+  belongs_to_active_hash :postage_type
   belongs_to_active_hash :item_area
   belongs_to_active_hash :item_preparation_day
   has_one_attached       :image
   belongs_to             :user
+  # has_many               :purchase
 
   with_options presence: true do
     validates :image
