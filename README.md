@@ -42,7 +42,7 @@ belongs_to_active_hash: category
 belongs_to_active_hash: status
 belongs_to_active_hash: postage_type
 belongs_to_active_hash: area
-belongs_to_active_hash: preparation_day
+belongs_to_active_hash: preparation_days
 
 ## purchases
 
