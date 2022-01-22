@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :item do
-    item                 { "カフェラテ" }
-    comment              {Faker::Lorem.sentence}
+    item                 { 'カフェラテ' }
+    comment              { Faker::Lorem.sentence }
     category_id          { 2 }
     postage_type_id      { 2 }
     status_id            { 2 }
