@@ -44,7 +44,7 @@ belongs_to_active_hash: postage_type
 belongs_to_active_hash: area
 belongs_to_active_hash: preparation_day
 
-## purchases
+## orders
 
 |Column   |Type        |Options                         |
 |---------|------------|--------------------------------|
