@@ -1,6 +1,7 @@
 class Address < ApplicationRecord
-  belongs_to             :order
-  belongs_to_active_hash :area
+  extend ActiveHash::Associations::ActiveRecordExtensions 
+  belongs_to :order
+  belongs_to :area
 
   validates :postal_code, presence: true
   validates :area_id,     presence: true
