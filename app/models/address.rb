@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
-  extend ActiveHash::Associations::ActiveRecordExtensions 
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :order
   belongs_to :area
 
@@ -8,5 +8,4 @@ class Address < ApplicationRecord
   validates :municipality, presence: true
   validates :block,        presence: true
   validates :phone_number, presence: true
-  
 end
