@@ -7,8 +7,5 @@ FactoryBot.define do
     block        { '123' }
     building     { 'アパート' }
     phone_number { '08008080808' }
-
-    association  :user
-    association  :item
   end
 end
