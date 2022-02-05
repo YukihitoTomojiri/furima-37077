@@ -44,7 +44,7 @@ belongs_to_active_hash: postage_type
 belongs_to_active_hash: area
 belongs_to_active_hash: preparation_day
 
-## purchases
+## orders
 
 |Column   |Type        |Options                         |
 |---------|------------|--------------------------------|
@@ -66,8 +66,8 @@ has_one: address
 | block          | string     | null:false                    |
 | building       | string     |                               |
 | phone_number   | string     | null:false                    |
-| purchase       | references | null:false, foreign_key: true |
+| order          | references | null:false, foreign_key: true |
 
 ### Association
-belongs_to: purchase
+belongs_to: order
 belongs_to_active_hash: area
